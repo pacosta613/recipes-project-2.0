@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="jumbotron">
+    <% if !session[:user_id] %>
+      <%=render partial: 'sessions/form', locals: {user: @user}%>
+    <% else %>
+      <h5>Welcome, </h5>
+      <h4><%= @user.first_name  %> <%= @user.last_name %></h4>
+      <h2>Recipe Site</h2>
+
+      <p>This rails app allows you to create your recipe along with its ingredients. Have fun creating great foods to eat.</p>
+
+      <h3>All Recipes:</h3>
+      <% @recipes.each do |recipe| %>
+        <li><%= link_to recipe.name, recipe_path(recipe) %></li>
+      <% end %>
+      <%= button_to 'Create New Recipe', new_recipe_path, method: 'get' %>
+    <% end %>
+  </div>
+</div>

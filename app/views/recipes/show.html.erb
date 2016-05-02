@@ -1,0 +1,14 @@
+<h1><%= @recipe.name.capitalize %></h1>
+
+<h3>Ingredients:</h3>
+
+<ol>
+  <% @recipe.ingredients.each do |ingredient| %>
+   <li><%= ingredient.name %></li><br>
+  <% end %>
+</ol>
+
+<%= button_to "Add Ingredients", new_recipe_ingredient_path(@recipe), method: 'get' %>
+<!--%= button_to "Edit Ingredients", routes not working!!!    edit_recipe_ingredient_path(@ingredient), method: 'get' %-->  
+<%= button_to "Edit Recipe", edit_recipe_path(@recipe), method: 'get' %>  
+<%= button_to "Delete Recipe", "/recipes/{@recipe.id}", method: 'delete' %>

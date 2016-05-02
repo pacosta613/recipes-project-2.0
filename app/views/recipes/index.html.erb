@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="jumbotron">
+      <h5>Welcome, </h5>
+      <h2>Recipe Site</h2>
+
+      <p>This rails app allows you to create your recipe along with its ingredients. Have fun creating great foods to eat.</p>
+
+      <h3>All Recipes:</h3>
+      <% @recipes.each do |recipe| %>
+        <li><%= link_to recipe.name, recipe_path(recipe) %></li>
+      <% end %>
+      <div class="small-2 large-4 columns">
+        <% if @recipes.any? %>
+         Recipe ratings: <%= rating_for @recipe, "recipe_ratings" %>
+          <br>
+        <% end %>
+      </div>
+      <%= button_to 'Create New Recipe', new_recipe_path, method: 'get' %>
+  </div>
+</div>
