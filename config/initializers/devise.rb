@@ -1,18 +1,19 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '3ac5bfa7a67e283661a4ee200a1ea0a3da980d78a36905e3bba7b0cc2e240a2a353b19739d6e9a123a3d679a60d0fe6bb3aef1eb5cebe3ba1fca9bfd3b3be5ec'
+  # config.secret_key = '6404cd50e58f83811f8a97d05d31cc489678b6ec1b8f57102342bd0e30a2cdb7770c60ac0e58e97ac5e701337a7920aafdea98607d3e5f1baa8a411372a6490b'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'pedro.acosta613@gmail.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -99,7 +100,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '55805f4c2258b9f98350ee40f77cb24ab8543c4c53b160c329f256f903f45f0390bf51c1e75bbd6f404a55308ebac7cb0996a124ef202bcbb4f2ad4392d584fd'
+  # config.pepper = 'ac259c2d200a2fe3bd674da487f3537e46051adf49927194919360ebc28661ca46439bac8ace984296a387bfc086f9a2d8f054410317d29c775a2b0f3891c665'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
@@ -262,4 +263,5 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+   config.omniauth :facebook, "1621499898175149", "36c3431f0cba93493c3df28404f10664"
 end

@@ -8,7 +8,31 @@
   <% end %>
 </ol>
 
+
+
 <%= button_to "Add Ingredients", new_recipe_ingredient_path(@recipe), method: 'get' %>
-<!--%= button_to "Edit Ingredients", routes not working!!!    edit_recipe_ingredient_path(@ingredient), method: 'get' %-->  
+<!--%= button_to "Edit Ingredients", edit_recipe_ingredient_path(@ingredient), method: 'get' %-->  
 <%= button_to "Edit Recipe", edit_recipe_path(@recipe), method: 'get' %>  
 <%= button_to "Delete Recipe", "/recipes/{@recipe.id}", method: 'delete' %>
+
+<h2>Add a comment:</h2>
+<%= form_for([@recipe, @recipe.comments.build]) do |f| %>
+  <div class="field">
+    <%= f.label :commenter %><br />
+    <%= f.text_field :commenter %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<h2>Comments</h2>
+<% @recipe.comments.each do |comment| %>
+  <p>
+    <%= comment.commenter %> - <%= comment.body %>
+  </p>
+<% end %>

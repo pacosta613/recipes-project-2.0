@@ -1,8 +1,8 @@
 class Recipe < ActiveRecord::Base
   ratyrate_rateable "recipe_ratings"
   
-  belongs_to :user
   has_many :ingredients
+  has_many :comments
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
 

@@ -7,14 +7,12 @@
 
       <h3>All Recipes:</h3>
       <% @recipes.each do |recipe| %>
-        <li><%= link_to recipe.name, recipe_path(recipe) %></li>
+        <div class="small-2 large-4 columns">
+          <% if !@recipes.empty? %>
+            <li><%= link_to recipe.name, recipe_path(recipe) %> - Recipe rating: <%= rating_for recipe, "recipe_ratings", disable_after_rate: true, half_show: true,  cancel_place: 'right'%>
+          <% end %></li>
+        </div>
       <% end %>
-      <div class="small-2 large-4 columns">
-        <% if @recipes.any? %>
-         Recipe ratings: <%= rating_for @recipe, "recipe_ratings" %>
-          <br>
-        <% end %>
-      </div>
       <%= button_to 'Create New Recipe', new_recipe_path, method: 'get' %>
   </div>
 </div>

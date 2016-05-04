@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429170333) do
+ActiveRecord::Schema.define(version: 20160504164030) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20160429170333) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "commenter"
+    t.text     "body"
+    t.integer  "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["recipe_id"], name: "index_comments_on_recipe_id"
 
   create_table "ingredients", force: :cascade do |t|
     t.integer  "recipe_id"
@@ -77,6 +87,8 @@ ActiveRecord::Schema.define(version: 20160429170333) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -89,6 +101,8 @@ ActiveRecord::Schema.define(version: 20160429170333) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
