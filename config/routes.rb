@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
   root 'recipes#index'
-  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" } do 
+    resources :comments
+  end
+  
   post '/rate' => 'rater#create', :as => 'rate'
+  
   resources :recipes do
     resources :ingredients
     resources :comments
   end
+  #get '/students' => 'students#show'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

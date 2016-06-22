@@ -9,24 +9,25 @@
 <body>
 
 <div id="cssmenu">
-<ul>
-  <li><%= link_to "Recipe Home Page", recipes_path %></li>
-    <%if signed_in?%>
-      <li class='active has-sub' style="float:right"><a href="#">Account</a>
-      <ul>  
-        <li><%=link_to current_user.email, edit_user_registration_path%></li>
-        <li><%=link_to "Logout", destroy_user_session_path, method: :delete%></li>
-      </ul>
-    </li>   
-    <%else%>
-      <li class='active has-sub' style="float:right"><a href="#">Account</a>
-      <ul>
-        <li><%=link_to "Sign up", new_user_registration_path%></li>
-        <li><%=link_to "Login", new_user_session_path%></li>
-      </ul>
-    <%end%>
-</ul>
+  <ul>
+    <li><%= link_to "Recipe Home Page", recipes_path %></li>
+      <%if signed_in?%>
+        <li class='active has-sub' style="float:right"><a href="#">Account</a>
+        <ul>  
+          <li><%=link_to current_user.email, edit_user_registration_path%></li>
+          <li><%=link_to "Logout", destroy_user_session_path, method: :delete%></li>
+        </ul>
+      </li>   
+      <%else%>
+        <li class='active has-sub' style="float:right"><a href="#">Account</a>
+        <ul>
+          <li><%=link_to "Sign up", new_user_registration_path%></li>
+          <li><%=link_to "Login", new_user_session_path%></li>
+        </ul>
+      <%end%>
+  </ul>
 </div>
+<%= render 'layouts/messages' %>
 <%= yield %>
 
 </body>

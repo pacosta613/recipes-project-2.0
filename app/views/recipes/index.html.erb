@@ -1,18 +1,18 @@
 <div class="container">
   <div class="jumbotron">
-      <h5>Welcome, </h5>
-      <h2>Recipe Site</h2>
+    <h5>Welcome, </h5>
+    <h2>Recipe Site</h2>
 
-      <p>This rails app allows you to create your recipe along with its ingredients. Have fun creating great foods to eat.</p>
+    <p>This rails app allows you to create your recipe along with its ingredients. Have fun creating great foods to eat.</p>
 
-      <h3>All Recipes:</h3>
-      <% @recipes.each do |recipe| %>
-        <div class="small-2 large-4 columns">
-          <% if !@recipes.empty? %>
-            <li><%= link_to recipe.name, recipe_path(recipe) %> - Recipe rating: <%= rating_for recipe, "recipe_ratings", disable_after_rate: true, half_show: true,  cancel_place: 'right'%>
-          <% end %></li>
-        </div>
-      <% end %>
-      <%= button_to 'Create New Recipe', new_recipe_path, method: 'get' %>
+    <h3>All Recipes:</h3>
+    <% @recipes.each do |recipe| %>
+      <div class="small-2 large-4 columns">
+        <% if !@recipes.empty? %>
+          <li><%= link_to recipe.name, recipe_path(recipe) %> - Recipe rating: <%= rating_for recipe, "recipe_ratings", disable_after_rate: true, half_show: true,  cancel_place: 'right'%>
+        <% end %></li>
+      </div>
+    <% end %>
+    <%= button_to 'Create New Recipe', new_recipe_path, method: 'get' %>
   </div>
 </div>

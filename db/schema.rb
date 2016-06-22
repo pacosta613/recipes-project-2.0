@@ -23,17 +23,14 @@ ActiveRecord::Schema.define(version: 20160504164030) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string   "commenter"
-    t.text     "body"
     t.integer  "recipe_id"
+    t.integer  "user_id"
+    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "comments", ["recipe_id"], name: "index_comments_on_recipe_id"
-
   create_table "ingredients", force: :cascade do |t|
-    t.integer  "recipe_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -81,9 +78,8 @@ ActiveRecord::Schema.define(version: 20160504164030) do
 
   create_table "recipes", force: :cascade do |t|
     t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

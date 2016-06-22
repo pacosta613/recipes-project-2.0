@@ -1,4 +1,8 @@
 class CommentsController < ApplicationController
+
+  def new 
+    @comment = Comment.new(user_id: params[:user_id])
+  end
   
   def create
     @recipe = Recipe.find(params[:recipe_id])
@@ -10,7 +14,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:recipe_id, :commenter, :body)
+    params.require(:comment).permit(:recipe_id, :content, :user_id, user_attributes: [:email])
   end
 
 end

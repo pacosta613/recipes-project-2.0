@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    find_recipe
+    find_recipe    
   end
 
   def edit
@@ -39,6 +39,7 @@ class RecipesController < ApplicationController
   end
 
   def destroy
+    #binding.pry
     find_recipe
     @recipe.destroy
 
@@ -46,9 +47,9 @@ class RecipesController < ApplicationController
   end
 
   private
-
+  # :user_id is meant to find comments user.
   def recipe_params
-    params.require(:recipe).permit(:name, :description, ingredients_attributes: :name)
+    params.require(:recipe).permit(:name, :user_id, ingredients_attributes: [:name])
   end
 
   def find_recipe

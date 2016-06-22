@@ -1,9 +1,1 @@
-<%= form_for(@recipe) do |r| %>
-  <%= r.label :name %>
-  <%= r.text_field :name %><br>
-
-  <% @recipe.ingredients.each do |ingredient| %>
-    <li><%= ingredient.name %></li>
-  <%end %>
-  <%= r.submit %>
-<% end %>
+<%= render partial: 'form', locals: {recipe: @recipe}  %>

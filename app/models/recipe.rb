@@ -1,7 +1,6 @@
 class Recipe < ActiveRecord::Base
   ratyrate_rateable "recipe_ratings"
   
-  has_many :ingredients
   has_many :comments
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
@@ -15,13 +14,15 @@ class Recipe < ActiveRecord::Base
   #    end
   #  end
   #end
+
   def ingredients_attributes=(ingredients_attributes)
     ingredients_attributes.values.each do |ingredient|
 
-      if !(ingredient["name"] == "")
-        ingredient = Ingredient.find_or_create_by(name: ingredient)
-        self.recipe_ingredients.build(:ingredient => ingredient)
-      end
+      #if !(ingredient["name"] == "")
+      ingredient = Ingredient.find_or_create_by(name: ingredient)
+      self.recipe_ingredients.build(:ingredient => ingredient)
+      #end
     end
   end
 end
+
