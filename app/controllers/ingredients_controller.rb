@@ -1,15 +1,16 @@
 class IngredientsController < ApplicationController
-
+  before_action :find_recipe
   def new
-    find_recipe
     @ingredient = @recipe.ingredients.build
   end
 
   def create
-    find_recipe
     @ingredient = @recipe.ingredients.create(ingredient_params)
     
     redirect_to recipe_path(@recipe)
+  end
+
+  def edit
   end
 
   private

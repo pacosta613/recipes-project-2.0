@@ -19,6 +19,7 @@
 <%= form_for([@recipe, @recipe.comments.build]) do |f| %>
   <div class="field">
     <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :recipe_id, value: @recipe.id %>
 
     <%= f.label :content %><br>
     <%= f.text_field :content %>
@@ -29,12 +30,11 @@
 <% end %>
 
 <h2>Comments</h2>
-<% if !@recipe.comments.empty? %>
+<!--% if !@recipe.comments.empty? %-->
   <% @recipe.comments.each do |comment| %>
     
       <p>
-      <%= binding.pry %>
         <%= comment.user %>  <%= comment.content %>
       </p>
-  <% end %>
+  <!--% end %-->
 <% end %>

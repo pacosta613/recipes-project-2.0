@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   ratyrate_rater
   has_many :comments
+  has_many :recipes
    devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
      :omniauthable, :omniauth_providers => [:facebook]

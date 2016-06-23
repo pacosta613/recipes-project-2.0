@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   #before_action :require_user, only: [:create, :show, :edit, :update, :destroy]
   before_action :find_recipes, only: [:index]
+  before_action :find_recipe, only: [:show, :edit, :update, :destroy]
   
   def index
     @recipes = Recipe.all
@@ -20,16 +21,13 @@ class RecipesController < ApplicationController
     end
   end
 
-  def show
-    find_recipe    
+  def show    
   end
 
   def edit
-    find_recipe
   end
 
   def update
-    find_recipe
     if @recipe.update(recipe_params)
 
       redirect_to @recipe
@@ -40,7 +38,6 @@ class RecipesController < ApplicationController
 
   def destroy
     #binding.pry
-    find_recipe
     @recipe.destroy
 
     redirect_to root_path
