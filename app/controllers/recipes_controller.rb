@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       
-      redirect_to recipes_path(@recipe)
+      redirect_to @recipe
     else
       render 'new'
     end
@@ -46,7 +46,7 @@ class RecipesController < ApplicationController
   private
   # :user_id is meant to find comments user.
   def recipe_params
-    params.require(:recipe).permit(:name, :user_id, ingredients_attributes: [:name])
+    params.require(:recipe).permit(:name, :user_id, ingredient_ids: [], ingredients_attributes: [:name])
   end
 
   def find_recipe

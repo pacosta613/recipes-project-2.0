@@ -1,5 +1,6 @@
 class IngredientsController < ApplicationController
   before_action :find_recipe
+  
   def new
     @ingredient = @recipe.ingredients.build
   end
