@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :ingredients
     resources :comments
   end
+  resources :comments
   #get '/students' => 'students#show'
   
   # The priority is based upon order of creation: first created -> highest priority.

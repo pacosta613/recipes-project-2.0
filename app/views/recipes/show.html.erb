@@ -16,17 +16,13 @@
 <%= button_to "Delete Recipe", "/recipes/#{@recipe.id}", method: 'delete' %>
 
 <h2>Add a comment:</h2>
-<%= form_for([@recipe, @recipe.comments.build]) do |f| %>
-  <div class="field">
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.hidden_field :recipe_id, value: @recipe.id %>
+<%= form_for @comment do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :recipe_id, value: @recipe.id %>
 
-    <%= f.label :content %><br>
-    <%= f.text_field :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.label :content %><br>
+  <%= f.text_field :content %>
+  <%= f.submit %>
 <% end %>
 
 <h2>Comments</h2>
@@ -34,7 +30,7 @@
   <% @recipe.comments.each do |comment| %>
     
       <p>
-        <%= comment.user %>  <%= comment.content %>
+        <%= comment.user.email %>:</br> <%= comment.content %>
       </p>
   <!--% end %-->
 <% end %>
