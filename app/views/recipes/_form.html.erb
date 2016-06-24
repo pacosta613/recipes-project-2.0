@@ -1,4 +1,4 @@
-<%= form_for @recipe do |r| %>
+<%= form_for recipe do |r| %>
   <%= r.label :name %>
   <%= r.text_field :name %><br><br>
 
@@ -8,6 +8,6 @@
     <%= ingredient.collection_select :ingredient_ids, Ingredient.all, :id, :name, prompt: true %>
   <% end %>
 
-
+  
   <%= r.submit %>
 <% end %>

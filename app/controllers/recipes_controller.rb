@@ -12,9 +12,13 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = Recipe.create(recipe_params)
+    #binding.pry
+    #raise params.inspect 
+    #@recipe.ingredients = params[:recipe][:ingredient_ids]
     if @recipe.save
-      
+      binding.pry
+      #raise params.inspect 
       redirect_to @recipe
     else
       render 'new'
@@ -48,7 +52,7 @@ class RecipesController < ApplicationController
   private
   # :user_id is meant to find comments user.
   def recipe_params
-    params.require(:recipe).permit(:name, :user_id, ingredient_ids: [], ingredients_attributes: [:name])
+    params.require(:recipe).permit(:name, :user_id, :ingredient_ids => [], :ingredients_attributes => [:name])
   end
 
   def find_recipe
