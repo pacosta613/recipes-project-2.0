@@ -11,7 +11,6 @@
 
 
 <%= button_to "Add Ingredients", new_recipe_ingredient_path(@recipe), method: 'get' %>
-<!--%= button_to "Edit Ingredients", edit_recipe_ingredient_path(@recipe), method: 'get' %-->
 <%= button_to "Edit Recipe", edit_recipe_path(@recipe), method: 'get' %>  
 <%= button_to "Delete Recipe", "/recipes/#{@recipe.id}", method: 'delete' %>
 

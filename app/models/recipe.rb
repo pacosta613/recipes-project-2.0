@@ -7,14 +7,7 @@ class Recipe < ActiveRecord::Base
   has_many :ingredients, through: :recipe_ingredients
 
   validates :name, :presence => true
-  #accepts_nested_attributes_for :ingredients_attributes
-  #def ingredients_attributes=(ingredients_attributes)
-  #  ingredients_attributes.values.each do |ingredients|
-  #    ingredient = Ingredient.find_or_create_by(name: ingredient)
-  #    self.recipe_ingredients.build(:ingredient => ingredient)
-  #    end
-  #  end
-  #end
+  validates :name, :uniqueness => true
 
   def ingredients_attributes=(ingredients_attributes)
     ingredients_attributes.values.each do |ingredient_attributes|
