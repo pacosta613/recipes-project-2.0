@@ -5,9 +5,9 @@
   <%= r.fields_for :ingredients_attributes do |ingredient| %>
     <%= ingredient.label 'Ingredients:' %>
     <%= ingredient.text_field :name %>
-    <%= ingredient.collection_select :ingredient_ids, Ingredient.all, :id, :name, prompt: true %>
-  <% end %>
 
+  <% end %>
+<%= r.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
   
   <%= r.submit %>
 <% end %>

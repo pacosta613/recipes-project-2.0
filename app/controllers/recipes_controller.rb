@@ -17,10 +17,11 @@ class RecipesController < ApplicationController
     #raise params.inspect 
     #@recipe.ingredients = params[:recipe][:ingredient_ids]
     if @recipe.save
-      binding.pry
+      #binding.pry
       #raise params.inspect 
       redirect_to @recipe
     else
+      flash[:alert] = "Re-enter recipe name"
       render 'new'
     end
   end
