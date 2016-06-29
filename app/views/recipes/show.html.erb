@@ -25,11 +25,8 @@
 <% end %>
 
 <h2>Comments</h2>
-<!--% if !@recipe.comments.empty? %-->
-  <% @recipe.comments.each do |comment| %>
-    
-      <p>
-        <%= comment.user.email %>:</br> <%= comment.content %>
-      </p>
-  <!--% end %-->
+  <% @recipe.comments.each do |comment| %>   
+    <p>
+      <%= comment.user.email %>:</br> <%= comment.content %>
+    </p>
 <% end %>

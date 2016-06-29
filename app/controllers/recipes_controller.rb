@@ -13,12 +13,9 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.create(recipe_params)
-    #binding.pry
-    #raise params.inspect 
     #@recipe.ingredients = params[:recipe][:ingredient_ids]
     if @recipe.save
-      #binding.pry
-      #raise params.inspect 
+
       redirect_to @recipe
     else
       flash[:alert] = "Re-enter recipe name"
@@ -44,14 +41,13 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    #binding.pry
     @recipe.destroy
 
     redirect_to root_path
   end
 
   private
-  # :user_id is meant to find comments user.
+
   def recipe_params
     params.require(:recipe).permit(:name, :user_id, :ingredient_ids => [], :ingredients_attributes => [:name])
   end
