@@ -11,8 +11,14 @@ class CommentsController < ApplicationController
   
   def create
     @comment = Comment.create(comment_params)
-    
-    redirect_to recipe_path(@comment.recipe)
+    if @comment.save
+
+      redirect_to recipe_path(@comment.recipe)
+    else
+      flash[:alert] = @comment.errors.full_messages
+
+      redirect_to recipe_path(@comment.recipe)
+    end
   end
 
   private

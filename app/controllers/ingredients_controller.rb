@@ -16,8 +16,13 @@ class IngredientsController < ApplicationController
 
   def create
     @ingredient = @recipe.ingredients.create(ingredient_params) 
-  
-    redirect_to recipe_path(@recipe)
+    if @ingredient.save
+
+      redirect_to recipe_path(@recipe)
+    else
+      flash.now[:alert] = @ingredient.errors.full_messages
+      render :new
+    end
   end
 
   private
