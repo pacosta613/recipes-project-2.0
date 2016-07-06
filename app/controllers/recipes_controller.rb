@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.create(recipe_params)
     if @recipe.save
-
+      flash[:success] = "Created a new recipe"
       redirect_to @recipe
     else
       flash[:alert] = @recipe.errors.full_messages
