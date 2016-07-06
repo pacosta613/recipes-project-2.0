@@ -8,14 +8,12 @@
   <% end %>
 </ol>
 
-
-
 <%= button_to "Add Ingredients", new_recipe_ingredient_path(@recipe), method: 'get' %>
 <%= button_to "Edit Recipe", edit_recipe_path(@recipe), method: 'get' %>  
 <%= button_to "Delete Recipe", "/recipes/#{@recipe.id}", method: 'delete' %>
 
 <h2>Add a comment:</h2>
-<%= form_for @comment do |f| %>
+<%= form_for ([@recipe, @comment])do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :recipe_id, value: @recipe.id %>
 

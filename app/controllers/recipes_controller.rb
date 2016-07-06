@@ -1,5 +1,4 @@
 class RecipesController < ApplicationController
-  #before_action :require_user, only: [:create, :show, :edit, :update, :destroy]
   before_action :find_recipes, only: [:index]
   before_action :find_recipe, only: [:show, :edit, :update, :destroy]
   
@@ -13,19 +12,17 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.create(recipe_params)
-    #@recipe.ingredients = params[:recipe][:ingredient_ids]
     if @recipe.save
 
       redirect_to @recipe
     else
-      flash[:alert] = "Re-enter recipe name"
-      render 'new'
+      flash[:alert] = @recipe.errors.full_messages
+      render :new
     end
   end
 
   def show    
     @comment = Comment.new
-    #@comments = @recipe.comments
   end
 
   def edit

@@ -1,17 +1,23 @@
 class IngredientsController < ApplicationController
-  before_action :find_recipe
-  
+  before_action :find_recipe, except: [:index]
+
+  def index
+    if params[:recipe_id]
+      @recipe = Recipe.find(params[:recipe_id])
+      @ingredients = @recipe.ingredients
+    else
+      @ingredients = Ingredient.all
+    end
+  end
+
   def new
     @ingredient = @recipe.ingredients.build
   end
 
   def create
-    @ingredient = @recipe.ingredients.create(ingredient_params)
-    
+    @ingredient = @recipe.ingredients.create(ingredient_params) 
+  
     redirect_to recipe_path(@recipe)
-  end
-
-  def edit
   end
 
   private
