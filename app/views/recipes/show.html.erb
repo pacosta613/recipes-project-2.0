@@ -23,8 +23,8 @@
 <% end %>
 
 <h2>Comments</h2>
-  <% @recipe.comments.each do |comment| %>   
-    <p>
-      <%= comment.user.email %>:</br> <%= comment.content %>
-    </p>
-<% end %>
+<ol>
+  <% @recipe.comments.each do |comment| %>
+    <li><%= comment.user.email %> -  <%= comment.content %></li>    
+  <% end %>
+</ol>

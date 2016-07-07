@@ -8,7 +8,9 @@
     <%= ingredient.text_field :name %>
 
   <% end %>
+
   <%= r.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
   <%= r.hidden_field :user_id, value: current_user.id %>
+  
   <%= r.submit %>
 <% end %>
