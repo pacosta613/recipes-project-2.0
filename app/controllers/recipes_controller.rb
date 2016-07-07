@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
   
   def index
     @recipes = Recipe.all
+    @recipe = Recipe.all.most_popular
   end
 
   def new
