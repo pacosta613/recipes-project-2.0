@@ -20,15 +20,24 @@ class IngredientsController < ApplicationController
 
       redirect_to recipe_path(@recipe)
     else
-      flash.now[:alert] = @ingredient.errors.full_messages
-      render :new
+      flash[:alert] = @ingredient.errors.full_messages
+      redirect_to new_recipe_ingredient_path
     end
   end
+
+  def edit
+    
+  end
+
+  def update
+  end
+
+  
 
   private
 
   def ingredient_params
-    params.require(:ingredient).permit(:name, :recipe_id)
+    params.require(:ingredient).permit(:name, :recipe_id, :ingredient_ids => [])
   end
 
   def find_recipe
